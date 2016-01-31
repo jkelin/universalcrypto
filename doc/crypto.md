@@ -2,25 +2,38 @@
 ## universal-crypto
 
 * [universal-crypto](#module_universal-crypto)
-    * _static_
-        * [.CryptCypher](#module_universal-crypto.CryptCypher) : <code>enum</code>
-        * [.CryptMode](#module_universal-crypto.CryptMode) : <code>enum</code>
-        * [.Hash](#module_universal-crypto.Hash) : <code>enum</code>
-        * [.DerivationAlgorithm](#module_universal-crypto.DerivationAlgorithm) : <code>enum</code>
-        * [.ab2str(buffer)](#module_universal-crypto.ab2str) ⇒ <code>String</code>
-        * [.str2ab(str)](#module_universal-crypto.str2ab) ⇒ <code>ArrayBuffer</code>
-        * [.ab2hex(buffer)](#module_universal-crypto.ab2hex) ⇒ <code>string</code>
-        * [.hex2ab(hex)](#module_universal-crypto.hex2ab) ⇒ <code>ArrayBuffer</code>
-        * [.randomBuffer(len)](#module_universal-crypto.randomBuffer) ⇒ <code>Promise.&lt;ArrayBuffer&gt;</code>
-        * [.digest(data, [opts])](#module_universal-crypto.digest) ⇒ <code>Promise.&lt;ArrayBuffer, Error&gt;</code>
-        * [.derive(password, salt, [opts])](#module_universal-crypto.derive) ⇒ <code>Promise.&lt;ArrayBuffer, Error&gt;</code>
-        * [.encrypt(key, iv, data, [opts])](#module_universal-crypto.encrypt)
-        * [.decrypt(key, iv, data, [opts])](#module_universal-crypto.decrypt)
-    * _inner_
-        * [~saltLength](#module_universal-crypto..saltLength) : <code>number</code>
-        * [~ivLength](#module_universal-crypto..ivLength) : <code>number</code>
-        * [~tagLength](#module_universal-crypto..tagLength) : <code>number</code>
+    * [.saltLength](#module_universal-crypto.saltLength) : <code>number</code>
+    * [.ivLength](#module_universal-crypto.ivLength) : <code>number</code>
+    * [.tagLength](#module_universal-crypto.tagLength) : <code>number</code>
+    * [.CryptCypher](#module_universal-crypto.CryptCypher) : <code>enum</code>
+    * [.CryptMode](#module_universal-crypto.CryptMode) : <code>enum</code>
+    * [.Hash](#module_universal-crypto.Hash) : <code>enum</code>
+    * [.DerivationAlgorithm](#module_universal-crypto.DerivationAlgorithm) : <code>enum</code>
+    * [.ab2str(buffer)](#module_universal-crypto.ab2str) ⇒ <code>String</code>
+    * [.str2ab(str)](#module_universal-crypto.str2ab) ⇒ <code>ArrayBuffer</code>
+    * [.ab2hex(buffer)](#module_universal-crypto.ab2hex) ⇒ <code>string</code>
+    * [.hex2ab(hex)](#module_universal-crypto.hex2ab) ⇒ <code>ArrayBuffer</code>
+    * [.randomBuffer(len)](#module_universal-crypto.randomBuffer) ⇒ <code>Promise.&lt;ArrayBuffer&gt;</code>
+    * [.digest(data, [opts])](#module_universal-crypto.digest) ⇒ <code>Promise.&lt;ArrayBuffer, Error&gt;</code>
+    * [.derive(password, salt, [opts])](#module_universal-crypto.derive) ⇒ <code>Promise.&lt;ArrayBuffer, Error&gt;</code>
+    * [.encrypt(key, iv, data, [opts])](#module_universal-crypto.encrypt) ⇒ <code>Promise.&lt;ArrayBuffer, Error&gt;</code>
+    * [.decrypt(key, iv, data, [opts])](#module_universal-crypto.decrypt) ⇒ <code>Promise.&lt;ArrayBuffer, Error&gt;</code>
 
+<a name="module_universal-crypto.saltLength"></a>
+### universal-crypto.saltLength : <code>number</code>
+Suggested length of salt in Bytes
+
+**Kind**: static constant of <code>[universal-crypto](#module_universal-crypto)</code>  
+<a name="module_universal-crypto.ivLength"></a>
+### universal-crypto.ivLength : <code>number</code>
+Suggested length of initialization vector in Bytes
+
+**Kind**: static constant of <code>[universal-crypto](#module_universal-crypto)</code>  
+<a name="module_universal-crypto.tagLength"></a>
+### universal-crypto.tagLength : <code>number</code>
+Suggested length of tag for gcm mode in bits
+
+**Kind**: static constant of <code>[universal-crypto](#module_universal-crypto)</code>  
 <a name="module_universal-crypto.CryptCypher"></a>
 ### universal-crypto.CryptCypher : <code>enum</code>
 Cypher types that you can use in 'encrypt' and 'decrypt' functions
@@ -152,7 +165,7 @@ Can be though of as 'hash(password + salt) * iterations'
 | [opts.bits] | <code>Number</code> | <code>256</code> | Number of bits that will be derived and output. This is also dependent on the hashing algorithm used |
 
 <a name="module_universal-crypto.encrypt"></a>
-### universal-crypto.encrypt(key, iv, data, [opts])
+### universal-crypto.encrypt(key, iv, data, [opts]) ⇒ <code>Promise.&lt;ArrayBuffer, Error&gt;</code>
 Encrypts data using key and iv with symmetrical algorithm and its mode chosen in the opts
 
 **Kind**: static method of <code>[universal-crypto](#module_universal-crypto)</code>  
@@ -169,7 +182,7 @@ Encrypts data using key and iv with symmetrical algorithm and its mode chosen in
 | [opts.tagLength] | <code>Number</code> | <code>128</code> | Tag length for the AES-GCM mode |
 
 <a name="module_universal-crypto.decrypt"></a>
-### universal-crypto.decrypt(key, iv, data, [opts])
+### universal-crypto.decrypt(key, iv, data, [opts]) ⇒ <code>Promise.&lt;ArrayBuffer, Error&gt;</code>
 Decrypt data using key and iv with symmetrical algorithm and its mode chosen in the opts
 Reverses encrypt
 
@@ -186,18 +199,3 @@ Reverses encrypt
 | [opts.additionalData] | <code>ArrayBuffer</code> | <code>[]</code> | Additional data for the AES-GCM mode. Required if additional data has been used during encryption |
 | [opts.tagLength] | <code>Number</code> | <code>128</code> | Tag length for the AES-GCM mode |
 
-<a name="module_universal-crypto..saltLength"></a>
-### universal-crypto~saltLength : <code>number</code>
-Suggested length of salt in Bytes
-
-**Kind**: inner constant of <code>[universal-crypto](#module_universal-crypto)</code>  
-<a name="module_universal-crypto..ivLength"></a>
-### universal-crypto~ivLength : <code>number</code>
-Suggested length of initialization vector in Bytes
-
-**Kind**: inner constant of <code>[universal-crypto](#module_universal-crypto)</code>  
-<a name="module_universal-crypto..tagLength"></a>
-### universal-crypto~tagLength : <code>number</code>
-Suggested length of tag for gcm mode in bits
-
-**Kind**: inner constant of <code>[universal-crypto](#module_universal-crypto)</code>  
