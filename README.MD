@@ -1,0 +1,1 @@
+Common interface for SubtleCrypto, SJCL and other cryptographic functions.

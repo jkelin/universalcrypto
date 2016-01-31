@@ -1,0 +1,22 @@
+{
+  "name": "universal-crypto",
+  "description": "Common interface for SubtleCrypto, SJCL and other cryptographic libraries.",
+  "main": "lib/crypto.js",
+  "repository": "https://github.com/fireantik/universalcrypto.git",
+  "version": "0.0.1",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "rusha": "^0.8.3",
+    "sjcl": "^1.0.3",
+    "spark-md5": "^2.0.0",
+    "text-encoding": "^0.5.2"
+  },
+  "devDependencies": {
+    "karma": "^0.13.19",
+    "karma-mocha": "^0.2.1",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.4.5",
+    "webpack": "^1.12.12"
+  },
+  "license" : "MIT"
+}
